@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -78,37 +79,31 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState){
+        super.onPostCreate(savedInstanceState);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = null;
-        Class fragmentClass;
-        fragmentClass = MainActivity.class;
-
-
         if (id == R.id.nav_camera) {
             // home
 
-
         } else if (id == R.id.nav_gallery) {
             //profile
-            fragmentClass = profile.class;
-
+            profile a = new profile();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent,a).commit();
 
         } else if (id == R.id.nav_slideshow) {
             //contact
-            fragmentClass = contact.class;
+            contact c = new contact();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent,c).commit();
         }
-        try{
-            fragment = (Fragment) fragmentClass.newInstance();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent,fragment);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

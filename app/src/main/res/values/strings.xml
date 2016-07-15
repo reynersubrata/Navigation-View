@@ -7,7 +7,8 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello guys this is profile page</string>
+    <string name="hello_contact_fragment">Hello guys this is contact page</string>
     <string name="title_activity_contact">contact</string>
     <string name="title_activity_profile">profile</string>
+    <string name="hello_profile_fragment">hello this is profile page</string>
 </resources>

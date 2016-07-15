@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragment = null;
+        Class fragmentClass;
 
         if (id == R.id.nav_camera) {
             // home
@@ -90,14 +92,14 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_gallery) {
             //profile
-            Intent intent = new Intent(MainActivity.this, profile.class);
-            startActivity(intent);
+            fragmentClass = profile.class;
+
 
         } else if (id == R.id.nav_slideshow) {
             //contact
-            Intent intent = new Intent(MainActivity.this, contact.class);
-            startActivity(intent);
+            fragmentClass = contact.class;
         }
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

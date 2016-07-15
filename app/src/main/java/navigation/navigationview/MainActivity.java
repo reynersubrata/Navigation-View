@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         Class fragmentClass;
+        fragmentClass = MainActivity.class;
+
 
         if (id == R.id.nav_camera) {
             // home
@@ -99,7 +101,14 @@ public class MainActivity extends AppCompatActivity
             //contact
             fragmentClass = contact.class;
         }
+        try{
+            fragment = (Fragment) fragmentClass.newInstance();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent,fragment);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
